@@ -1,0 +1,32 @@
+.container{
+    margin-top: 60px;
+}
+.article-date-pub{
+    float: right;
+}
+.create-article textarea{
+    resize: none;
+}
+.article-footer{
+    margin-top: 10px;
+}
+.comment-list{
+    margin-bottom: 20px;
+
+    background-color: silver;
+}
+.comment-author{
+    margin-left: 10px;
+    float: left;
+}
+.comment-date-pub{
+    margin-right: 10px;
+    float: right;
+}
+.comment-text{
+    clear: both;
+}
+
+.newcomment-text textarea{
+    resize: none;
+}

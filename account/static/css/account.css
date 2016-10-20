@@ -1,0 +1,32 @@
+.left-panel {
+    margin-top: 10px;
+    margin-right: 10px;
+    float: left;
+}
+
+.left-control-panel {
+    margin-top: 10px;
+}
+
+.header-panel {
+    float: left;
+}
+
+.profile-content {
+    clear: both;
+    width: 900px;
+}
+
+.post-block {
+    float: left;
+    width: 300px;
+    height: 120px;
+    margin-bottom: 30px ;
+}
+.post-title{
+    height: 40px;
+}
+.my-pagination{
+    clear: both;
+    height: 40px;
+}

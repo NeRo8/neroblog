@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="articles">
+        <div class="h1">{{ post.title }}</div>
+        <div class="article-body">
+            {{ post.post_text|safe }}
+        </div>
+        <div class="article-footer">
+            <div class="article-date-pub">
+                {% trans 'Publication date' %}: {{ post.date_pub }}
+            </div>
+            <div class="article-author">
+                {% trans 'Author' %}: {{ post.author }}
+            </div>
+        </div>
+    </div>
+    <hr>
+    <a href="{% url 'create-comment' post.pk %}">{% trans 'Add new comment' %}</a>
+    <a href="{% url 'article-like' post.pk %}" style="float: right">{% trans 'Like' %}:{{ post.likeit }} </a>
+    <hr>
+    {% include 'blog/post/comment_list.html' %}
+{% endblock %}

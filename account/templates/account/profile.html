@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="profile">
+        <div class="left-panel">
+            <img src="{{ profile.photo.url }}" width="200px" height="200px" class="img-circle">
+            <div class="left-control-panel">
+                <div class="control-profile">
+                    <div>
+                        <a href="{% url 'password_change' %}">Change password</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'edit' %}">Edit profile</a>
+                    </div>
+                    <div>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="control-blog">
+                    <div>
+                        <a href="{% url 'create-post' %}">Add article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-panel">
+            <div class="profile-info">
+                <div class="h3">
+                    Username: {{ profile.user.username }}
+                </div>
+                <div class="h4">
+                    Email: {{ profile.user.email }}
+                </div>
+                <div class="h4">
+                    Date of birth: {{ profile.date_of_birth }}
+                </div>
+            </div>
+            <hr>
+            <div class="profile-content">
+                {% include 'account/profile_post_list.html' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

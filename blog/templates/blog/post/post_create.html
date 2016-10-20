@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="create-article">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for foo in form %}
+                <div>
+                    {{ foo.label }}
+                </div>
+                <div>
+                    {{ foo }}
+                </div>
+            {% endfor %}
+            <input type="submit" style="float: right" class="btn-success" value="Save"/>
+        </form>
+    </div>
+{% endblock %}

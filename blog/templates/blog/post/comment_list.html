@@ -1,0 +1,16 @@
+{% load i18n %}
+{% for comment in post.comment_set.all %}
+    <div class="comment-list">
+        <div class="comment-author">
+            {% trans 'Author'%}: {{ comment.author }}
+        </div>
+        <div class="comment-date-pub">
+            {% trans 'Publication date'%}: {{ comment.date_pub }}
+        </div>
+        <div class="comment-text">
+            <pre>
+            {{ comment.comment_text }}
+            </pre>
+        </div>
+    </div>
+{% endfor %}

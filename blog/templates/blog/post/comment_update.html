@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+    <form method="post" action=".">
+        {% csrf_token %}
+        {% for form in forms %}
+            <div class="newcomment">
+                <div class="newcomment-label">
+                    {{ form.label }}
+                </div>
+                <div class="newcomment-text">
+                    {{ form }}
+                </div>
+            </div>
+        {% endfor %}
+        <input type="submit" class="btn-success" style="float: right" value="{% trans 'Send' %}">
+    </form>
+{% endblock %}

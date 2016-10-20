@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+    {% for post in posts %}
+        <div class="articles">
+            <div class="article-head">
+                <a href="{{post.pk}}" class="h1">
+                    {{ post.title }}
+                </a>
+            </div>
+            <div class="article-body">
+                {{ post.post_text|truncatewords:100|safe }}
+            </div>
+            <div class="article-footer">
+                <div class="article-date-pub">
+                    {% trans 'Publication date' %}: {{ post.date_pub }}
+                </div>
+                <div class="article-author">
+                    {% trans 'Author' %}: {{ post.author }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% include 'blog/pagination.html' with page=page_obj %}
+{% endblock %}
