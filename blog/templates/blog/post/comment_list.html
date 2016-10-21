@@ -2,11 +2,18 @@
 {% for comment in post.comment_set.all %}
     <div class="comment-list">
         <div class="comment-author">
-            {% trans 'Author'%}: {{ comment.author }}
+            {% trans 'Author' %}: {{ comment.author }}
         </div>
         <div class="comment-date-pub">
-            {% trans 'Publication date'%}: {{ comment.date_pub }}
+            {% trans 'Publication date' %}: {{ comment.date_pub }}
         </div>
+        <div class="comment-control-panel">
+            {% if request.user == comment.author %}
+                [<a href="{% url 'update-comment' post.id comment.id %}">{% trans 'Update' %}</a>]
+                [<a href="{% url 'delete-comment' post.id comment.id %}">{% trans 'Delete' %}</a>]
+            {% endif %}
+        </div>
+
         <div class="comment-text">
             <pre>
             {{ comment.comment_text }}

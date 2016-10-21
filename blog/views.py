@@ -51,7 +51,7 @@ class PostCreate(CreateView):
 class PostUpdate(UpdateView):
     model = Post
     form_class = PostForm
-    template_name = 'blog/post/post_update.html'
+    template_name = 'blog/post/post_create.html'
 
     def get_success_url(self):
         return reverse('profile')
@@ -95,15 +95,41 @@ def PostLike(request, pk):
     return HttpResponseRedirect(reverse('post-detail', args=[pk]))
 
 
-@login_required
-def NewComment(request, pk):
-    if request.method == 'POST':
-        newcomment = Comment(post_id_id=pk, author=request.user)
+@method_decorator(login_required, name='dispatch')
+class CommentCreate(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/post/comment_create.html'
 
-        form = CommentForm(request.POST, instance=newcomment)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('post-detail', args=[pk]))
-    else:
-        form = CommentForm()
-    return render(request, 'blog/post/comment_update.html', {'forms': form})
+    def get_success_url(self):
+        return reverse('post-detail', args=[self.kwargs['pk']])
+
+    def form_valid(self, form):
+        form.instance.post_id_id = self.kwargs['pk']
+        form.instance.author = self.request.user
+        return super(CommentCreate, self).form_valid(form)
+
+
+@method_decorator(login_required, name='dispatch')
+class CommentUpdate(UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = 'blog/post/comment_create.html'
+
+    def get_success_url(self):
+        return reverse('post-detail', args=[self.kwargs['post_id']])
+
+
+@method_decorator(login_required, name='dispatch')
+class CommentDelete(DeleteView):
+    model = Comment
+    template_name = 'blog/post/comment_delete.html'
+
+    def get_success_url(self):
+        return reverse('post-detail', args=[self.kwargs['post_id']])
+
+    def get_object(self, queryset=None):
+        obj = super(CommentDelete, self).get_object(queryset)
+        if obj.author != self.request.user:
+            raise Http404('Page does not exist or you are not authorized for this transaction.')
+        return obj

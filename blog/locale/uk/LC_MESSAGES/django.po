@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-19 18:40+0300\n"
+"POT-Creation-Date: 2016-10-21 15:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,7 +39,7 @@ msgstr "Про нас"
 
 #: blog/templates/blog/base.html:43
 msgid "Log-in"
-msgstr ""
+msgstr "Вхід"
 
 #: blog/templates/blog/pagination.html:6
 msgid "Previous"
@@ -53,27 +53,39 @@ msgstr "Сторінка"
 msgid "Next"
 msgstr "Наступна"
 
+#: blog/templates/blog/post/comment_create.html:15
+#: blog/templates/blog/post/comment_delete.html:8
+msgid "Send"
+msgstr "Відправити"
+
+#: blog/templates/blog/post/comment_delete.html:7
+msgid "Are you sure you want to delete "
+msgstr "Ви впевнині, що хочете видалити "
+
 #: blog/templates/blog/post/comment_list.html:5
-#: blog/templates/blog/post/detail.html:14
-#: blog/templates/blog/post/list.html:19
+#: blog/templates/blog/post/post_detail.html:14
+#: blog/templates/blog/post/post_list.html:19
 msgid "Author"
 msgstr "Автор"
 
 #: blog/templates/blog/post/comment_list.html:8
-#: blog/templates/blog/post/detail.html:11
-#: blog/templates/blog/post/list.html:16
+#: blog/templates/blog/post/post_detail.html:11
+#: blog/templates/blog/post/post_list.html:16
 msgid "Publication date"
 msgstr "Дата публікації"
 
-#: blog/templates/blog/post/detail.html:19
+#: blog/templates/blog/post/comment_list.html:12
+msgid "Update"
+msgstr "Змінити"
+
+#: blog/templates/blog/post/comment_list.html:13
+msgid "Delete"
+msgstr "Видалити"
+
+#: blog/templates/blog/post/post_detail.html:19
 msgid "Add new comment"
 msgstr "Додати коментар"
 
-#: blog/templates/blog/post/detail.html:20
+#: blog/templates/blog/post/post_detail.html:20
 msgid "Like"
 msgstr "Подобається"
-
-#: blog/templates/blog/post/new_comment.html:16
-#: blog/templates/blog/post/new_post.html:16
-msgid "Send"
-msgstr "Відправити"

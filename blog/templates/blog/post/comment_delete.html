@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="confirm-delete">
+        <form action="" method="post">{% csrf_token %}
+            <p>
+                {% blocktrans %}Are you sure you want to delete {% endblocktrans %}"{{ object }}"?</p>
+            <input type="submit" class="btn-success" value="{% trans 'Send' %}"/>
+        </form>
+    </div>
+{% endblock %}

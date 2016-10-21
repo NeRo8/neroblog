@@ -14,23 +14,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from blog.views import PostListView, PostDetailView, PostLike, NewComment, PostUpdate, PostDelete, PostCreate
+from . import views
 from django.contrib.sitemaps.views import sitemap
 from blog.sitemap import DinamicSitemap
 
 sitemaps = {'post': DinamicSitemap}
 
+# post
 urlpatterns = [
-    url(r'^$', PostListView.as_view(), name='post-list'),
-    url(r'^(?P<pk>\d+)/$', PostDetailView.as_view(), name='post-detail'),
-    url(r'^create-post/$', PostCreate.as_view(), name='create-post'),
-    url(r'^(?P<pk>\d+)/update-post/$', PostUpdate.as_view(), name='update-post'),
-    url(r'^(?P<pk>\d+)/delete-post/$', PostDelete.as_view(), name='delete-post'),
-
-    url(r'^(?P<pk>\d+)/create-comment/$', NewComment, name='create-comment'),
-    url(r'^(?P<pk>\d+)/article-like/$', PostLike, name='article-like'),
-
+    url(r'^$', views.PostListView.as_view(), name='post-list'),
+    url(r'^(?P<pk>\d+)/$', views.PostDetailView.as_view(), name='post-detail'),
+    url(r'^create-post/$', views.PostCreate.as_view(), name='create-post'),
+    url(r'^(?P<pk>\d+)/update-post/$', views.PostUpdate.as_view(), name='update-post'),
+    url(r'^(?P<pk>\d+)/delete-post/$', views.PostDelete.as_view(), name='delete-post'),
+    url(r'^(?P<pk>\d+)/article-like/$', views.PostLike, name='article-like'),
 ]
+# comment
+urlpatterns += [
+    url(r'^(?P<pk>\d+)/create-comment/$', views.CommentCreate.as_view(), name='create-comment'),
+    url(r'^(?P<post_id>\d+)/(?P<pk>\d+)/update-comment/$', views.CommentUpdate.as_view(), name='update-comment'),
+    url(r'^(?P<post_id>\d+)/(?P<pk>\d+)/delete-comment/$', views.CommentDelete.as_view(), name='delete-comment'),
+]
+
 urlpatterns += [
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]

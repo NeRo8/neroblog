@@ -1,32 +1,57 @@
-.container{
+.container {
     margin-top: 60px;
 }
-.article-date-pub{
+
+.article-date-pub {
     float: right;
 }
-.create-article textarea{
+
+.create-article textarea {
     resize: none;
 }
-.article-footer{
+
+.article-footer {
     margin-top: 10px;
 }
-.comment-list{
-    margin-bottom: 20px;
 
-    background-color: silver;
+.comment-list {
+    margin-bottom: 20px;
+    background-color: #149c82;
 }
-.comment-author{
+
+.comment-author {
     margin-left: 10px;
     float: left;
-}
-.comment-date-pub{
-    margin-right: 10px;
-    float: right;
-}
-.comment-text{
-    clear: both;
+    color: white;
+    margin-right: 20px;
 }
 
-.newcomment-text textarea{
+.comment-date-pub {
+    margin-right: 10px;
+    float: right;
+    color: white;
+}
+.comment-control-panel{
+    color: black;
+}
+.comment-control-panel a{
+    color: white;
+}
+.comment-control-panel a:hover{
+    color: crimson;
+}
+
+.comment-text {
+    clear: both;
+
+}
+.comment-text pre{
+    border-radius: 0;
+}
+
+.create-comment textarea {
     resize: none;
+}
+.confirm-delete{
+    margin: 200px 300px;
 }

@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load i18n %}
 {% block content %}
     <div class="profile">
         <div class="left-panel">
@@ -7,19 +7,19 @@
             <div class="left-control-panel">
                 <div class="control-profile">
                     <div>
-                        <a href="{% url 'password_change' %}">Change password</a>
+                        <a href="{% url 'password_change' %}">{% trans 'Change password' %}</a>
                     </div>
                     <div>
-                        <a href="{% url 'edit' %}">Edit profile</a>
+                        <a href="{% url 'edit' %}">{% trans 'Edit profile' %}</a>
                     </div>
                     <div>
-                        <a href="{% url 'logout' %}">Logout</a>
+                        <a href="{% url 'logout' %}">{% trans 'Logout' %}</a>
                     </div>
                 </div>
                 <hr>
                 <div class="control-blog">
                     <div>
-                        <a href="{% url 'create-post' %}">Add article</a>
+                        <a href="{% url 'create-post' %}">{% trans 'Add article' %}</a>
                     </div>
                 </div>
             </div>
@@ -27,13 +27,13 @@
         <div class="header-panel">
             <div class="profile-info">
                 <div class="h3">
-                    Username: {{ profile.user.username }}
+                    {% trans 'Username:' %} {{ profile.user.username }}
                 </div>
                 <div class="h4">
                     Email: {{ profile.user.email }}
                 </div>
                 <div class="h4">
-                    Date of birth: {{ profile.date_of_birth }}
+                    {% blocktrans %}Date of birth:{% endblocktrans %} {{ profile.date_of_birth }}
                 </div>
             </div>
             <hr>
